@@ -28,6 +28,12 @@ while(user_choice != '6'):
 
         file.read_all();
 
+    elif(user_choice == '4'):
+        new_password = generator.new_password()
+        service = input("What service do you want to save it for? ")
+        tuple = service + " \t --> \t " + new_password
+        file.update(service, tuple)
+
     else:
 
         Menu.bye()

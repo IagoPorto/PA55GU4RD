@@ -64,8 +64,16 @@ class File:
             print("Error reading the file:", self.file_name)
 
 
-    def update(self):
-        pass
+    def update(self, service, new_tuple):
+
+        with open(self.file_name, 'r') as file:
+
+            lines = (line.rstrip() for line in file)
+            altered_lines = [new_tuple if line.split(" ")[0] == service else line for line in lines]
+ 
+        with open(self.file_name, "w") as file:
+            
+            file.write('\n'.join(altered_lines) + '\n')
 
 
     def delete(self):
