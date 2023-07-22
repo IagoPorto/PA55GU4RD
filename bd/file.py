@@ -20,7 +20,33 @@ class File:
             print("Error saving password\n")
 
 
+    def read(self, service):
+
+        try:
+
+            with open(self.file_name, 'r') as file:
+
+                for line in file:
+                    
+                    aux = line.strip().split(" ")[0]
+                    if aux == service:
+                        print(line)
+                        break
+                else:
+                    
+                    print("{} service not found in file".format(service))
+
+        except FileNotFoundError:
+
+            print("The File '{}' doesn't exist.\n".format(self.file_name))
+
+        except IOError:
+
+            print("Error reading the file:", self.file_name)
+
+
     def read_all(self):
+
         try:
 
             with open(self.file_name, 'r') as file:

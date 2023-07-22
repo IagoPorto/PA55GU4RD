@@ -19,6 +19,11 @@ while(user_choice != '6'):
         tuple = service + " \t --> \t " + new_password
         file.save(tuple)
 
+    elif(user_choice == '2'):
+
+        service = input("For which service would you like to see the password? ")
+        file.read(service)
+
     elif(user_choice == '3'):
 
         file.read_all();
