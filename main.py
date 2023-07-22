@@ -3,6 +3,12 @@ from console_menu.menu import Menu
 from bd.file import File
 from variable import Variable
 
+def new_tuple():
+    new_password = generator.new_password()
+    service = input("\nWhat service do you want to save it for? ")
+    tuple = service + " \t --> \t " + new_password
+    return tuple, service
+
 generator = PasswordGenerator() 
 file = File(Variable.file_name)
 user_choice = 0
@@ -14,9 +20,7 @@ while(user_choice != '6'):
 
     if(user_choice == '1'):
 
-        new_password = generator.new_password()
-        service = input("\nWhat service do you want to save it for? ")
-        tuple = service + " \t --> \t " + new_password
+        tuple = new_tuple()
         file.save(tuple)
 
     elif(user_choice == '2'):
@@ -29,10 +33,8 @@ while(user_choice != '6'):
         file.read_all();
 
     elif(user_choice == '4'):
-
-        new_password = generator.new_password()
-        service = input("\nWhat service do you want to save it for? ")
-        tuple = service + " \t --> \t " + new_password
+        
+        tuple, service = new_tuple()
         file.update(service, tuple)
 
     elif(user_choice == '5'):
