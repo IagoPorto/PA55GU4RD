@@ -15,13 +15,13 @@ while(user_choice != '6'):
     if(user_choice == '1'):
 
         new_password = generator.new_password()
-        service = input("What service do you want to save it for? ")
+        service = input("\nWhat service do you want to save it for? ")
         tuple = service + " \t --> \t " + new_password
         file.save(tuple)
 
     elif(user_choice == '2'):
 
-        service = input("For which service would you like to see the password? ")
+        service = input("\nFor which service would you like to see the password? ")
         file.read(service)
 
     elif(user_choice == '3'):
@@ -29,11 +29,21 @@ while(user_choice != '6'):
         file.read_all();
 
     elif(user_choice == '4'):
+
         new_password = generator.new_password()
-        service = input("What service do you want to save it for? ")
+        service = input("\nWhat service do you want to save it for? ")
         tuple = service + " \t --> \t " + new_password
         file.update(service, tuple)
 
-    else:
+    elif(user_choice == '5'):
+
+        service = input("\nWhich service do you want to remove? ")
+        file.delete(service)
+
+    elif(user_choice == '6'):
 
         Menu.bye()
+
+    else:
+
+        print("\nInvalid option\n")
