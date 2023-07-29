@@ -3,6 +3,7 @@ from console_menu.menu import Menu
 from bd.file import File
 from variable import Variable
 from cipher.SecretPassword import SecretPassword
+import sys
 
 def new_tuple():
     new_password = generator.new_password()
@@ -15,14 +16,18 @@ file = File(Variable.file_name)
 user_choice = 0
 secret_password  = SecretPassword()
 
-if secret_password.thereIsPassword():
+if secret_password.thereIsPassword():  
    correct = False
    while correct == False:
-       
        correct = secret_password.login() 
-       print(correct)   
 else:
-    secret_password.newPassword()
+    create_new_password = input("There is no password, Would you want to create a new one? (Y/N)")
+    if(create_new_password.upper() == 'Y'):
+
+        secret_password.newPassword()
+    else:
+        Menu.bye()
+        sys.exit(1)
 
 
 while(user_choice != '6'):

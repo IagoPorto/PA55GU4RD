@@ -25,7 +25,7 @@ class SecretPassword:
             print("Error saving password\n")
 
     def newPassword(self):
-        newPassword = input("\nEnter the new secret password ")
+        newPassword = input("\nPlaese, enter the new secret password: ")
         self.savePassword(str(self.hash_password(newPassword)))
 
     def hash_password(slef, password):
@@ -38,17 +38,15 @@ class SecretPassword:
 
 
     def login(self):
-        password = input("\nEnter the new secret password ")
+        password = input("\nPlease, enter the password: ")
         passwordHash = self.hash_password(password)
         try:
             with open(Variable.file_secret, 'r') as file:
                 for line in file: 
                     aux = line.strip()
-                    print("aux " + aux)
-                    print("pass " + str(passwordHash))
                     break
                 else:
-                    print("There is no password saved")
+                    print("There is no password saved\n")
                 self.check_password(aux, passwordHash)
         except FileNotFoundError:
             print("The File '{}' doesn't exist.\n".format(Variable.file_secret))
