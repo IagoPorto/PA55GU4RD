@@ -18,8 +18,9 @@ secret_password  = SecretPassword()
 
 if secret_password.thereIsPassword():  
    correct = False
-   while correct == False:
+   while not correct:
        correct = secret_password.login() 
+       print(correct)
 else:
     create_new_password = input("There is no password, Would you want to create a new one? (Y/N)")
     if(create_new_password.upper() == 'Y'):

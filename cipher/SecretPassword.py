@@ -34,12 +34,11 @@ class SecretPassword:
         return hashed_password.decode('utf-8')
 
     def check_password(self, password, password_to_check):
-        return bcrypt.checkpw(password.encode('utf-8'), password_to_check.encode('utf-8'))
+        return bcrypt.checkpw(password_to_check.encode('utf-8'), password.encode('utf-8'))
 
 
     def login(self):
         password = input("\nPlease, enter the password: ")
-        passwordHash = self.hash_password(password)
         try:
             with open(Variable.file_secret, 'r') as file:
                 for line in file: 
@@ -47,7 +46,7 @@ class SecretPassword:
                     break
                 else:
                     print("There is no password saved\n")
-                self.check_password(aux, passwordHash)
+                return self.check_password(aux, password)
         except FileNotFoundError:
             print("The File '{}' doesn't exist.\n".format(Variable.file_secret))
             return False
