@@ -31,7 +31,7 @@ else:
         sys.exit(1)
 
 
-while(user_choice != '6'):
+while(user_choice != '7'):
 
     Menu.print_menu();
     user_choice = input("Select choice: ")
@@ -60,10 +60,13 @@ while(user_choice != '6'):
         service = input("\nWhich service do you want to remove? ")
         file.delete(service)
 
-    elif(user_choice == '6'):
+    elif(user_choice  == '6'):
+        secret_password.changePassword()
+
+    elif(user_choice == '7'):
 
         Menu.bye()
-
+    
     else:
 
         print("\nInvalid option\n")

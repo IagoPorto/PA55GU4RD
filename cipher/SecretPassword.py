@@ -53,4 +53,14 @@ class SecretPassword:
         except IOError:
             print("Error reading the file:", Variable.file_secret)
             return False
+        
+    def changePassword(self):
+        password = input("\nPlease, enter the new password: ")
+        hash_password = str(self.hash_password(password))
+        try:
+            with open(Variable.file_secret, 'w') as file:
+                file.write(hash_password + "\n")
+            print("Password saved correctly\n")
+        except IOError:
+            print("Error saving password\n")
              
