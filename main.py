@@ -30,33 +30,26 @@ else:
         Menu.bye()
         sys.exit(1)
 
-
 while(user_choice != '7'):
-
     Menu.print_menu();
     user_choice = input("Select choice: ")
 
     if(user_choice == '1'):
-
         tuple = new_tuple()
         file.save(tuple)
 
     elif(user_choice == '2'):
-
         service = input("\nFor which service would you like to see the password? ")
         file.read(service)
 
     elif(user_choice == '3'):
-
         file.read_all();
 
-    elif(user_choice == '4'):
-        
+    elif(user_choice == '4'):   
         tuple, service = new_tuple()
         file.update(service, tuple)
 
     elif(user_choice == '5'):
-
         service = input("\nWhich service do you want to remove? ")
         file.delete(service)
 
@@ -64,9 +57,7 @@ while(user_choice != '7'):
         secret_password.changePassword()
 
     elif(user_choice == '7'):
-
         Menu.bye()
     
     else:
-
         print("\nInvalid option\n")
