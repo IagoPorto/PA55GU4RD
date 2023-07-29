@@ -2,6 +2,7 @@ from password_generation.PasswordGenerator import PasswordGenerator
 from console_menu.menu import Menu
 from bd.file import File
 from variable import Variable
+from cipher.SecretPassword import SecretPassword
 
 def new_tuple():
     new_password = generator.new_password()
@@ -12,6 +13,17 @@ def new_tuple():
 generator = PasswordGenerator() 
 file = File(Variable.file_name)
 user_choice = 0
+secret_password  = SecretPassword()
+
+if secret_password.thereIsPassword():
+   correct = False
+   while correct == False:
+       
+       correct = secret_password.login() 
+       print(correct)   
+else:
+    secret_password.newPassword()
+
 
 while(user_choice != '6'):
 
