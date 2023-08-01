@@ -1,15 +1,17 @@
+import os
 import os.path
 import bcrypt
-from app.variable import Variable
+from dotenv import load_dotenv
 
 class SecretPassword:
 
     def __init__(self):
-        pass
+        load_dotenv()
+        self.secret_file = os.getenv("file_secret")
 
     def thereIsPassword(self):
         try:
-            if os.path.getsize(Variable.file_secret) == 0 :
+            if os.path.getsize(self.secret_file) == 0 :
                 return False
             else:
                 return True
@@ -18,7 +20,7 @@ class SecretPassword:
         
     def savePassword(self, password):
         try:
-            with open(Variable.file_secret, 'a') as file:
+            with open(self.secret_file, 'a') as file:
                 file.write(password + "\n")
             print("Password saved correctly\n")
         except IOError:
@@ -40,7 +42,7 @@ class SecretPassword:
     def login(self):
         password = input("\nPlease, enter the password: ")
         try:
-            with open(Variable.file_secret, 'r') as file:
+            with open(self.secret_file, 'r') as file:
                 for line in file: 
                     aux = line.strip()
                     break
@@ -48,17 +50,17 @@ class SecretPassword:
                     print("There is no password saved\n")
                 return self.check_password(aux, password)
         except FileNotFoundError:
-            print("The File '{}' doesn't exist.\n".format(Variable.file_secret))
+            print("The File '{}' doesn't exist.\n".format(self.secret_file))
             return False
         except IOError:
-            print("Error reading the file:", Variable.file_secret)
+            print("Error reading the file:", self.secret_filet)
             return False
         
     def changePassword(self):
         password = input("\nPlease, enter the new password: ")
         hash_password = str(self.hash_password(password))
         try:
-            with open(Variable.file_secret, 'w') as file:
+            with open(self.secret_file, 'w') as file:
                 file.write(hash_password + "\n")
             print("Password saved correctly\n")
         except IOError:
