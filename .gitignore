@@ -1,9 +1,2 @@
-password_generation/__pycache__
-console_menu/__pycache__
-bd/__pycache__
-variable/__pycache__
-cipher/__pycache__
-bd/password_bd/password.txt
-bd/password_bd/.secret_password.txt
 .notes
 .vscode
