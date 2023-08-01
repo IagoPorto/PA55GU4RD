@@ -1,6 +1,7 @@
 import os
 import os.path
 import bcrypt
+from ..db.file import File
 from dotenv import load_dotenv
 
 class SecretPassword:
@@ -8,8 +9,9 @@ class SecretPassword:
     def __init__(self):
         load_dotenv()
         self.secret_file = os.getenv("file_secret")
+        print(self.secret_file)
 
-    def thereIsPassword(self):
+    def there_is_password(self):
         try:
             if os.path.getsize(self.secret_file) == 0 :
                 return False
@@ -18,7 +20,7 @@ class SecretPassword:
         except FileNotFoundError:
             return False
         
-    def savePassword(self, password):
+    def save_password(self, password):
         try:
             with open(self.secret_file, 'a') as file:
                 file.write(password + "\n")
@@ -26,9 +28,9 @@ class SecretPassword:
         except IOError:
             print("Error saving password\n")
 
-    def newPassword(self):
+    def new_password(self):
         newPassword = input("\nPlaese, enter the new secret password: ")
-        self.savePassword(str(self.hash_password(newPassword)))
+        self.save_password(str(self.hash_password(newPassword)))
 
     def hash_password(slef, password):
         salt = bcrypt.gensalt()
@@ -56,7 +58,7 @@ class SecretPassword:
             print("Error reading the file:", self.secret_filet)
             return False
         
-    def changePassword(self):
+    def change_password(self):
         password = input("\nPlease, enter the new password: ")
         hash_password = str(self.hash_password(password))
         try:
