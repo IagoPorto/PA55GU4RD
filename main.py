@@ -1,7 +1,7 @@
 from app.password_generation.PasswordGenerator import PasswordGenerator
 from app.cipher.SecretPassword import SecretPassword
 from app.console_menu.menu import Menu
-from app.bd.file import File
+from app.db.file import File
 from dotenv import load_dotenv
 
 import os
