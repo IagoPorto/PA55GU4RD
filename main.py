@@ -1,8 +1,10 @@
-from password_generation.PasswordGenerator import PasswordGenerator
-from console_menu.menu import Menu
-from bd.file import File
-from variable import Variable
-from cipher.SecretPassword import SecretPassword
+from app.password_generation.PasswordGenerator import PasswordGenerator
+from app.cipher.SecretPassword import SecretPassword
+from app.console_menu.menu import Menu
+from app.bd.file import File
+from dotenv import load_dotenv
+
+import os
 import sys
 
 def new_tuple():
@@ -11,8 +13,9 @@ def new_tuple():
     tuple = service + " \t --> \t " + new_password
     return tuple, service
 
+load_dotenv()
 generator = PasswordGenerator() 
-file = File(Variable.file_name)
+file = File(os.getenv("file_name"))
 user_choice = 0
 secret_password  = SecretPassword()
 

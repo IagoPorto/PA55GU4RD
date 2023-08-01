@@ -6,3 +6,4 @@ cipher/__pycache__
 bd/password_bd/password.txt
 bd/password_bd/.secret_password.txt
 .notes
+.vscode

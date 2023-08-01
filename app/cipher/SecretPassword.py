@@ -1,6 +1,6 @@
 import os.path
 import bcrypt
-from variable import Variable
+from app.variable import Variable
 
 class SecretPassword:
 
