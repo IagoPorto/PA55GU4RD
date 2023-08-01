@@ -1,7 +1,11 @@
 app/password_generation/__pycache__
+
 app/console_menu/__pycache__
-app/bd/__pycache__
+
+app/db/__pycache__
+app/db/password_bd/password.txt
+app/db/password_bd/.secret_password.txt
+
 app/variable/__pycache__
+
 app/cipher/__pycache__
-app/bd/password_bd/password.txt
-app/bd/password_bd/.secret_password.txt
