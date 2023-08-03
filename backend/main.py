@@ -1,8 +1,8 @@
-from app.password_generation.PasswordGenerator import PasswordGenerator
-from app.cipher.SecretPassword import SecretPassword
-from app.console_menu.menu import Menu
-from app.db.file import File
-from app.cipher.cipher import AES
+from src.password_generation.PasswordGenerator import PasswordGenerator
+from src.cipher.SecretPassword import SecretPassword
+from src.console_menu.menu import Menu
+from src.db.file import File
+from src.cipher.cipher import AES
 from dotenv import load_dotenv
 
 import os
