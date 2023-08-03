@@ -1,7 +1,6 @@
 import os
 import os.path
 import bcrypt
-from ..db.file import File
 from dotenv import load_dotenv
 
 class SecretPassword:
@@ -29,10 +28,11 @@ class SecretPassword:
             print("Error saving password\n")
 
     def new_password(self):
-        newPassword = input("\nPlaese, enter the new secret password: ")
-        self.save_password(str(self.hash_password(newPassword)))
+        new_user = input("\nPlease, enter the new user: ")
+        new_password = input("Plaese, enter the new secret password: ")
+        self.save_password(str(self.hash_password(new_user)) + " --> separator --> " + str(self.hash_password(new_password)))
 
-    def hash_password(slef, password):
+    def hash_password(self, password):
         salt = bcrypt.gensalt()
         hashed_password = bcrypt.hashpw(password.encode('utf-8'), salt)
         return hashed_password.decode('utf-8')
@@ -42,15 +42,17 @@ class SecretPassword:
 
 
     def login(self):
-        password = input("\nPlease, enter the password: ")
+        user = input("\nPease, enter the user: ")
+        password = input("Please, enter the password: ")
         try:
             with open(self.secret_file, 'r') as file:
                 for line in file: 
-                    aux = line.strip()
+                    parts = line.strip().split(" --> separator --> ")
                     break
                 else:
                     print("There is no password saved\n")
-                return self.check_password(aux, password)
+
+                return (self.check_password(parts[1], password) and self.check_password(parts[0], user))
         except FileNotFoundError:
             print("The File '{}' doesn't exist.\n".format(self.secret_file))
             return False
@@ -59,11 +61,12 @@ class SecretPassword:
             return False
         
     def change_password(self):
-        password = input("\nPlease, enter the new password: ")
-        hash_password = str(self.hash_password(password))
+        user = input("\nPlease, enter the new user: ")
+        password = input("Please, enter the new password: ")
+        line = str(self.hash_password(new_user)) + " --> separator --> " + str(self.hash_password(new_password))
         try:
             with open(self.secret_file, 'w') as file:
-                file.write(hash_password + "\n")
+                file.write(line + "\n")
             print("Password saved correctly\n")
         except IOError:
             print("Error saving password\n")
