@@ -2,6 +2,7 @@ from app.password_generation.PasswordGenerator import PasswordGenerator
 from app.cipher.SecretPassword import SecretPassword
 from app.console_menu.menu import Menu
 from app.db.file import File
+from app.cipher.cipher import AES
 from dotenv import load_dotenv
 
 import os
@@ -10,8 +11,7 @@ import sys
 def new_tuple():
     new_password = generator.new_password()
     service = input("\nWhat service do you want to save it for? ")
-    tuple = service + " \t --> \t " + new_password
-    return tuple, service
+    return (service, new_password)
 
 load_dotenv()
 file_name = os.getenv("file_name")
@@ -39,7 +39,15 @@ while(user_choice != '7'):
     user_choice = input("Select choice: ")
 
     if(user_choice == '1'):
-        tuple, service = new_tuple()
+        service, new_password = new_tuple()
+        cipher = AES()
+        secret_password = input("Please, introduce the secret password: ")
+        iv, ciphertext, tag = cipher.encrypt_data(secret_password, new_password)
+        print("New password: " + new_password)
+        print("iv: " + str(iv))
+        print("tag: " + str(tag))
+        print("cipher: " + str(ciphertext))
+        tuple = service + " -> " + str(iv) + " ;; " + str(tag) + " ;; " + str(ciphertext)
         file.save(tuple, file_name)
 
     elif(user_choice == '2'):
