@@ -130,7 +130,7 @@ class Main {
      *
      *
      *
-     * 
+     *
      */
     fun main(){
         val name = "stranger"
