@@ -63,7 +63,7 @@ class SecretPassword:
     def change_password(self):
         user = input("\nPlease, enter the new user: ")
         password = input("Please, enter the new password: ")
-        line = str(self.hash_password(new_user)) + " --> separator --> " + str(self.hash_password(new_password))
+        line = str(self.hash_password(user)) + " --> separator --> " + str(self.hash_password(password))
         try:
             with open(self.secret_file, 'w') as file:
                 file.write(line + "\n")
