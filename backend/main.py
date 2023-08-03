@@ -17,6 +17,7 @@ load_dotenv()
 file_name = os.getenv("file_name")
 generator = PasswordGenerator() 
 file = File()
+cipher = AES()
 user_choice = 0
 secret_password  = SecretPassword()
 
@@ -40,19 +41,26 @@ while(user_choice != '7'):
 
     if(user_choice == '1'):
         service, new_password = new_tuple()
-        cipher = AES()
         secret_password = input("Please, introduce the secret password: ")
         iv, ciphertext, tag = cipher.encrypt_data(secret_password, new_password)
-        print("New password: " + new_password)
-        print("iv: " + str(iv))
-        print("tag: " + str(tag))
-        print("cipher: " + str(ciphertext))
-        tuple = service + " -> " + str(iv) + " ;; " + str(tag) + " ;; " + str(ciphertext)
+        print("New password: ")
+        print(new_password)
+        print("iv: ")
+        print(iv)
+        print("tag: ")
+        print(tag)
+        print("cipher: ")
+        print(cipher)
+        tuple = service + " -> " + iv.hex() + " ;; " + tag.hex() + " ;; " + ciphertext.hex()
         file.save(tuple, file_name)
 
     elif(user_choice == '2'):
         service = input("\nFor which service would you like to see the password? ")
-        file.read(service, file_name)
+        line = file.read(service, file_name)
+        secret_password = input("Please, introduce the secret password: ")
+        parts = line.strip().split(" ;; ")
+        password = cipher.decrypt_data(secret_password.encode('utf-8'), bytes.fromhex(parts[0]), bytes.fromhex(parts[2]), bytes.fromhex(parts[1]))
+        print("Your password: " + password)
 
     elif(user_choice == '3'):
         file.read_all(file_name);

@@ -21,10 +21,10 @@ class File:
         try:
             with open(file_name, 'r') as file:
                 for line in file:   
-                    aux = line.strip().split(" ")[0]
+                    aux = line.strip().split(" -> ")[0]
                     if aux == service:
                         print(line)
-                        break
+                        return line.strip().split(" -> ")[1]
                 else:                   
                     print("{} service not found in file".format(service))
         except FileNotFoundError:
