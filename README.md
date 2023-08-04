@@ -24,7 +24,7 @@
    + User manager. Now only one user is allowed, but in the future it will be possible to have more.
    + Frontend
       + Android application
-      + Linux application
+      + Linux/Windows application
    + Secure conection between backend and frontend.
       + Asymmetric encryption using RSA algorithm
       + JWT
