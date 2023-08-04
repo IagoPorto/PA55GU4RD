@@ -16,6 +16,7 @@
       ```
    + Create a new user and a new password.
    + Now you can create a random password and save it securely for future reference.
+      + You need to use a 32-character password to encrypt your other passwords, which will not be stored anywhere, and only you can know it.
    + You can change and delete the passwords. 
 
 ## 2. What will be in the future?
