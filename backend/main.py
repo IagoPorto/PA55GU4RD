@@ -74,7 +74,11 @@ while(user_choice != '7'):
         file.delete(service, file_name)
 
     elif(user_choice  == '6'):
-        secret_password.change_password()
+        
+        correct = secret_password.login() 
+        print(correct)
+        if(correct):
+            secret_password.change_password()
 
     elif(user_choice == '7'):
         Menu.bye()

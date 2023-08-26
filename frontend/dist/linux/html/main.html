@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pantalla principal</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <h1>Bienvenido a la pantalla principal</h1>
+    <button onclick="show_alert()">Haz clic</button>
+    <script>
+        function show_alert() {
+            window.pywebview.api.show_alert('¡Haz clic en el botón!');
+        }
+    </script>
+</body>
+</html>
