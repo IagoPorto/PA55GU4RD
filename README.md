@@ -1,6 +1,6 @@
 # \<PA55GU4RD\>
 
-\*\*\*\* WORK IN PROGRESS \*\*\*\*
+\*\*\*\* **WORK IN PROGRESS** \*\*\*\*
 
 \<PA55GU4RD\> is a way to store your passwords securely. Users and passwords are stored hashed and passwords are stored with symmetric encryption using the AES-256 algorithm.
 
@@ -11,7 +11,7 @@
 
 ## 1. Getting Started
 
-**First and foremost, \<PA55GU4RD\>, is a program still under development, so there may be bugs and missing functionality.**
+> **First and foremost, \<PA55GU4RD\>, is a program still under development, so there may be bugs and missing functionality.**
 
 ### 1.1 Dependecies
 
