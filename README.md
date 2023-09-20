@@ -11,7 +11,7 @@
 
 ## 1. Getting Started
 
-**First of all, \<PA55GU4RD\>, is a program still under development. There are bugs and missing functionality.**
+**First and foremost, \<PA55GU4RD\>, is a program still under development, so there may be bugs and missing functionality.**
 
 ### 1.1 Dependecies
 
@@ -22,7 +22,7 @@
 
 ### 1.2 Execution
 
-* Execute the main.py file (available in the backend folder)
+* To run the program, execute the main.py file (available in the backend folder) using the following command:
 
    ```shell
    python main.py
@@ -30,19 +30,21 @@
 
 * Create a new user and a new password.
 * Now you can create a random password and save it securely for future reference.
-  * You need to use a 32-character password to encrypt your other passwords, which will not be stored anywhere, and only you can know it.
+  * To securely save passwords for future reference, you'll need to use a 32-character password for encryption, which will not be stored anywhere, ensuring that only you know it.
 * You can change and delete the passwords.
 
 ## 2. What will be in the future?
 
-* DB
-* Invisible passwords. You will be able to copy the password without it being displayed on the screen.
-* User manager. Now only one user is allowed, but in the future it will be possible to have more.
-* Frontend
+In the future, <PA55GU4RD> will include the following enhancements:
+
+* Database (DB) integration
+* Invisible passwords. The ability to copy passwords without displaying them on the screen.
+* User manager. Support for multiple users.
+* Frontend development:
   * Android application
   * Linux/Windows application
-* Secure conection between backend and frontend.
+* Secure conection between backend and frontend, featuring:
   * Asymmetric encryption using RSA algorithm
-  * JWT
+  * JWT (Jason Web token)
   * HTTPS
-  * ¿WireGuard?
+  * Possible WireGuard integration
