@@ -1,49 +1,43 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
-@app.route('/passguard/paswords/alls', methods=['GET'])
+base_url = "/passguard/"
+
+@app.route(base_url + 'paswords/all', methods=['GET'])
 def get_all_passwords():
+    #TODO make the function
+    #function that returns all the user passwords
     return
 
-@app.route('/passguard/paswords/<int:pass_id>', methods=['GET'])
+@app.route(base_url + 'paswords/<int:pass_id>', methods=['GET'])
 def get_password():
+    #TODO make the function
+    #Function that returns a password for a specific user
     return  
 
-# POST request to add a new task
-@app.route('/api/tasks', methods=['POST'])
-def create_task():
+@app.route(base_url + 'new', methods=['POST'])
+def new_password():
+    #TODO make the function
+    #create a function that creats a new password for a specific service
     if not request.json or 'title' not in request.json:
         return jsonify({'error': 'The request must contain a title'}), 400
 
-    new_task = {
-        'id': len(tasks) + 1,
-        'title': request.json['title'],
-        'done': False
+    new_pass = {
+        'user': request.json['user'],
+        'service': request.json['service']
     }
-    tasks.append(new_task)
-    return jsonify({'task': new_task}), 201
+    return jsonify({}), 201
+@app.route(base_url + 'passwords/<int:pass_id>', methods=['PUT'])
 
-# PUT request to update a task by ID
-@app.route('/api/tasks/<int:task_id>', methods=['PUT'])
-def update_task(task_id):
-    task = next((t for t in tasks if t['id'] == task_id), None)
-    if task is None:
-        return jsonify({'error': 'Task not found'}), 404
+def update_password(pass_id):
+    #TODO make the function
+    #function that updates an especific password for a specific user
 
-    if 'title' in request.json:
-        task['title'] = request.json['title']
-    if 'done' in request.json:
-        task['done'] = request.json['done']
+    return jsonify({})
 
-    return jsonify({'task': task})
-
-# DELETE request to delete a task by ID
-@app.route('/api/tasks/<int:task_id>', methods=['DELETE'])
+@app.route(base_url + 'passwords/<int:pass_id>', methods=['DELETE'])
 def delete_task(task_id):
-    task = next((t for t in tasks if t['id'] == task_id), None)
-    if task is None:
-        return jsonify({'error': 'Task not found'}), 404
-
-    tasks.remove(task)
-    return jsonify({'result': True})
+    #TODO make the function
+    #function that delets an especific password for an especific user
+    return jsonify({})
